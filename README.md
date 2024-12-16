@@ -13,9 +13,5 @@ Skimba. L, W, and H denote the length, width, and height of the original scene, 
   
 ![Figure_2](https://github.com/user-attachments/assets/34f2bdd6-a0ce-46f7-8c6a-5c5a8474dacc)
 *Figure 2: Architectural details of the Skimba denoising network. Refer to the text for details.*  
-  
-![Figure_3](https://github.com/user-attachments/assets/2ed4fbdf-92d4-4f23-96f6-e7fe210c0554)
-*Figure 3: Qualitative results on the SemanticKITTI validation set. Columns from the left represent, input data, ground truth,
-and outputs of SkimbaDiff (our method), MonoScene, OccFormer, and VoxFormer-T (a stereo method)*  
 
 We will release the code soon.
