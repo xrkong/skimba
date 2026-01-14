@@ -1,0 +1,120 @@
+
+name: "Train_UNet"
+type: "python"
+request: "launch"
+module: "accelerate.commands.launch"
+console: "integratedTerminal"
+justMyCode: False
+
+config_file: "stable_diffusion/config/accelerate_config/deepspeed.yaml"
+main_process_port: "29511"
+
+###dataset
+
+dataset: "poloclub/diffusiondb"
+subset: "2m_first_10k",
+data-dir: "data/dataset",
+resolution: "64",
+#random-flip
+max-train-samples: "9000"
+max-val-samples: "500",
+max-test-samples: "500",
+dataloader-num-workers: "4",
+### checkpointing
+ckpt-dir: "model/unet",
+checkpointing-steps: "10"  ##save every 100 steps
+## model unet:
+num-res-blocks: "2",
+n-heads: "8",
+attention-resolutions: "0,1",
+channels-list: "160,320",  // "160,320,640,640",
+time-emb-dim: "512",
+dropout: "0.1",
+n-layers: "2",
+context-dim: "768", // match CLIP madel
+##scheduler
+noise-schedule: "linear",
+noise-steps: "1000",
+beta-start: "0.0001",
+beta-end: "0.02",
+##clip
+tokenizer: "runwayml/stable-diffusion-v1-5",
+text-encoder: "runwayml/stable-diffusion-v1-5",
+max-seq-len: "77",
+model-dir: "data/pretrained",
+# training
+seed: "42",
+train-batch-size: "1",
+eval-batch-size: "8",
+max-train-steps: "200",
+guidance-scale: "7.5",
+max-train-epochs: "10",
+log-interval: "100",
+learning-rate: "0.0001",
+adam-weight-decay: "0.1",
+lr-warmup-steps: "500",
+#ditributed
+use-deepspeed: True
+use-8bit-adam: True
+
+
+
+
+
+
+#name: "Train_AutoEncoder"
+#type: "python",
+#request": "launch",
+#module: "accelerate.commands.launch",
+#console: "integratedTerminal",
+#justMyCode: False
+##args
+#
+#config_file: "stable_diffusion/config/accelerate_config/deepspeed.yaml",
+#main_process_port: "29511",
+##"train_autoencoder.py",
+#
+##data
+#dataset: "poloclub/diffusiondb",
+#subset: "2m_first_10k",
+#data-dir: "data/dataset",
+#resolution: "64",
+#random-flip: True
+#max-train-samples: "700",
+#max-val-samples: "50",
+#max-test-samples: "50",
+#dataloader-num-workers: "4",
+###checkpointing
+#ckpt-dir: "model",
+#resume-from-checkpoint: "latest",
+#checkpointing-steps: "10", // save every 100 steps
+#### model
+###autoencoder
+#in-channels: "3",
+#latent-channels: "4",
+#out-channels: "3",
+#autoencoder-channels-list: "64,128",
+#groups: "32",
+#autoencoder-num-res-blocks: "2",
+#
+##training
+#seed: "42",
+#train-batch-size: "8",
+#eval-batch-size: "8",
+#max-train-steps: "10000",
+#guidance-scale: "7.5",
+#max-train-epochs: "10",
+#log-interval: "100",
+#learning-rate: "0.001",
+#adam-weight-decay: "0.1",
+#lr-warmup-steps: "500",
+#ditributed: True
+#use-deepspeed: True
+#use-8bit-adam: True
+#
+#name: "Sample_txt2img",
+#type: "python",
+#request: "launch",
+#program: "scripts/txt2img.py",
+#console: "integratedTerminal",
+#justMyCode: false,
