@@ -14,4 +14,21 @@ Skimba. L, W, and H denote the length, width, and height of the original scene, 
 ![Figure_2](https://github.com/user-attachments/assets/34f2bdd6-a0ce-46f7-8c6a-5c5a8474dacc)
 *Figure 2: Architectural details of the Skimba denoising network. Refer to the text for details.*  
 
-We will release the code soon.
+
+## Citation 
+If you use this codebase, or otherwise find our work valuable, please cite Skimba:
+
+```
+@article{skimba_2025, 
+    title={Skip Mamba Diffusion for Monocular 3D Semantic Scene Completion}, 
+    volume={39}, 
+    url={https://ojs.aaai.org/index.php/AAAI/article/view/32547}, 
+    DOI={10.1609/aaai.v39i5.32547}, 
+    number={5}, 
+    journal={Proceedings of the AAAI Conference on Artificial Intelligence}, 
+    author={Liang, Li and Akhtar, Naveed and Vice, Jordan and Kong, Xiangrui and Mian, Ajmal Saeed}, 
+    year={2025}, 
+    month={Apr.}, 
+    pages={5155-5163} 
+}
+```
